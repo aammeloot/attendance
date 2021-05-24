@@ -48,17 +48,16 @@ def generate_line(num: int, rate: int) -> dict:
             sem_attendance.append('X')
         else:
             sem_attendance.append('U')
+    
+    actual_rate = sem_attendance.count('X') / len(sem_attendance) * 100
+    actual_rate = int(actual_rate)
 
     # Now generate grade, I'm rougly taking the attendance and 
     # Applying a +/- 20% random correction
-    correction = randint(-20,20)
-    marks = rate + correction
+    correction = randint(-15,15)
+    marks = actual_rate + correction
 
     # Making an adjustment to grade, if attendance under 20 grade will be 0
-    ratio = sem_attendance.count('X') / len(sem_attendance)
-    if ratio < 0.2:
-        marks = 0
-    
     if marks > 100:
         marks = 100
     if marks < 0:
