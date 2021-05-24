@@ -27,9 +27,9 @@ import typing
 from random import randint
 from random import shuffle
 
-# Distribution (0-40%, 40-60%, 60-100%)
+# Distribution (35% attend, 70% attend, 90% attend)
 # Sum should be 1
-DIST = (.2,.6,.2)
+DIST = (.1,.8,.2)
 
 def generate_line(num: int, rate: int) -> dict:
     # User profile in dictionary
@@ -76,13 +76,13 @@ def generate_file(lines: int, destination: str) -> None:
     randomised_rates = []
     # First filled with 20s
     for counter in range(int(lines * DIST[0])):
-        randomised_rates.append(20)
+        randomised_rates.append(35)
     # 60s
     for counter in range(int(lines * DIST[1])):
-        randomised_rates.append(60)
+        randomised_rates.append(70)
     # 80s
     for counter in range(int(lines * DIST[2])):
-        randomised_rates.append(80)
+        randomised_rates.append(90)
 
     # Randomise the results    
     shuffle(randomised_rates)
